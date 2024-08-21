@@ -10,12 +10,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/Personnes")
-public class PersonneController {
+public class
+PersonneController {
 
 
 
@@ -64,5 +66,19 @@ public class PersonneController {
     public ResponseEntity<List<Gouvernerat>> getAllgouv(){
         List<Gouvernerat> liste=servicegouv.getAllgouv();
         return new ResponseEntity<>(liste, HttpStatus.OK);
+    }
+
+    @GetMapping("/getallentities")
+    public List<Object> getAllEntities() {
+        List<Object> allEntities = new ArrayList<>();
+
+
+        allEntities.addAll(servicegouv.getAllgouv());
+
+        allEntities.addAll(service.getAllPersonnes());
+
+
+
+        return allEntities;
     }
 }

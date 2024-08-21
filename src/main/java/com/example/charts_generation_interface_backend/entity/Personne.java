@@ -28,6 +28,7 @@ public class Personne implements Serializable {
     private String personnePrenom;
 
     private String personneMail;
+    private Integer age;
 
   /* private Integer personneGouvernerat;*/
 
