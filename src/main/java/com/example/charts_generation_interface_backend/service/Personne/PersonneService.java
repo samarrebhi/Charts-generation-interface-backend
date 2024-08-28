@@ -35,10 +35,7 @@ GouverneratRepository gouverneratRepository;
 
         return personneRepository.save(person);
     }
-    /*@Override
-    public Personne addPersonne(Personne person) {
-        return personneRepository.save(person);
-    }*/
+
 
     @Override
     public List<Personne> getAllPersonnes() {
@@ -71,20 +68,7 @@ GouverneratRepository gouverneratRepository;
         }
         return null;
     }
-    /* @Override
-    public Personne editPersonne(Integer id, Personne personne,Integer idgouv) {
-        if (personneRepository.findById(id).isPresent()) {
-            Personne personne1 = personneRepository.findById(id).get();
-            Gouvernerat gouv=gouverneratRepository.findById(idgouv).get();
-            personne1.setPersonneGouvernerat(gouv);
-            personne1.setPersonneMail(personne.getPersonneMail());
-            personne1.setPersonnePrenom(personne.getPersonnePrenom());
-            personne1.setPersonneNom(personne.getPersonneNom());
 
-            return personneRepository.save(personne1);
-        }
-        return null;
-    }*/
 
     }
 

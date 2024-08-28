@@ -22,11 +22,9 @@ import java.util.Set;
 @AllArgsConstructor
 public class Gouvernerat implements Serializable {
     @Id
-  /*  @GeneratedValue(strategy = GenerationType.IDENTITY)*/
+
     private Integer gouverneratId ;
     private String gouverneratLibelle;
-    /////////
-//private String type="pie";
 
     @OneToMany(mappedBy="personneGouvernerat",cascade = CascadeType.ALL,orphanRemoval = true)
     @JsonIgnoreProperties("personneGouvernerat")

@@ -39,23 +39,7 @@ public class SaleController {
 
     @Autowired
     private StoreService storeService;
-/*
-    @GetMapping("/getallentities")
-    public AllentitiesDTO getAllEntities() {
-        AllentitiesDTO allEntitiesDTO = new AllentitiesDTO();
 
-        List<Sale> sales = saleService.getAllSales();
-        List<Customer> customers = customerService.getAllCustomers();
-        List<Product> products = productService.getallProducts();
-        List<Store> stores = storeService.getAllStores();
-
-        allEntitiesDTO.setSales(sales);
-        allEntitiesDTO.setCustomers(customers);
-        allEntitiesDTO.setProducts(products);
-        allEntitiesDTO.setStores(stores);
-
-        return allEntitiesDTO;
-    }*/
     @GetMapping("/getallentities")
     public List<Object> getAllEntities() {
         List<Object> allEntities = new ArrayList<>();

@@ -30,10 +30,10 @@ public class Personne implements Serializable {
     private String personneMail;
     private Integer age;
 
-  /* private Integer personneGouvernerat;*/
+
 
     @ManyToOne
-    //@JoinColumn(name = "gouvernerat_id", nullable = false)
+
     @JsonIgnoreProperties("personneList")
     private Gouvernerat personneGouvernerat;
 

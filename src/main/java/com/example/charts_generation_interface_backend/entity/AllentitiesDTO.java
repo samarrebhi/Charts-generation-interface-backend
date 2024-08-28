@@ -45,5 +45,5 @@ public class AllentitiesDTO {
     private List<Product> products;
     private List<Store> stores;
 
-    // Getters and setters
+
 }

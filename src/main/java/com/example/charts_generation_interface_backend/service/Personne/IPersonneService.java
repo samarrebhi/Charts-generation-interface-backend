@@ -6,8 +6,7 @@ import jakarta.transaction.Transactional;
 import java.util.List;
 
 public interface IPersonneService {
-   /* Personne addPersonne(Personne person);
-*/
+
     @Transactional
     Personne addPersonne(Personne person, Integer gouverneratId);
 
@@ -19,7 +18,7 @@ public interface IPersonneService {
 
  Personne editPersonne(Integer id, Personne personne);
 
- //Personne editPersonne(Integer id, Personne personne, Integer idgouv);
+
 }
 
 

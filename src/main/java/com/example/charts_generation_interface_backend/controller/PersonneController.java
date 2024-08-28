@@ -8,10 +8,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -29,8 +31,28 @@ PersonneController {
     @JsonIgnore
     public IGouverneratService servicegouv;
 
+    //////////////// api for charts generation
+    @GetMapping("/getallentities")
+    public List<Object> getAllEntities() {
+        List<Object> allEntities = new ArrayList<>();
 
 
+        allEntities.addAll(servicegouv.getAllgouv());
+
+        allEntities.addAll(service.getAllPersonnes());
+
+
+
+        return allEntities;
+    }
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+    @PostMapping("/executeSql")
+    public ResponseEntity<List<Map<String, Object>>> executeSql(@RequestBody String sqlQuery) {
+        List<Map<String, Object>> results = jdbcTemplate.queryForList(sqlQuery);
+        return ResponseEntity.ok(results);
+    }
     @PostMapping("/addpersonne/{gouverneartid}")
     public Personne addPersonne(@RequestBody Personne personne,@PathVariable Integer gouverneartid) {return service.addPersonne(personne,gouverneartid);}
 
@@ -68,17 +90,4 @@ PersonneController {
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }
 
-    @GetMapping("/getallentities")
-    public List<Object> getAllEntities() {
-        List<Object> allEntities = new ArrayList<>();
-
-
-        allEntities.addAll(servicegouv.getAllgouv());
-
-        allEntities.addAll(service.getAllPersonnes());
-
-
-
-        return allEntities;
-    }
 }
